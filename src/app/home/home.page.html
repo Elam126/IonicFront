@@ -34,12 +34,28 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
-<div class=screen>
+<ion-content>
+
+ 
+
 <ion-slides pager="false" [options]="slideOpts">
   <ion-slide *ngFor="let item of items">
   <ion-card class="ion-no-margin">
-   <!-- <ion-img [src]="item.news_pics"></ion-img> -->
+
+    
+   
     <div class=image [style.backgroundImage]="'url(' + item.news_pics + ')'"></div>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow_down"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+
+    
 <div class="heading">
      {{ item.heading }}
 </div>
@@ -54,7 +70,7 @@
   </ion-card>
   </ion-slide>
   </ion-slides>
-</div>
 
-
+</ion-content>
+<!-- <ion-img [src]="item.news_pics"></ion-img> -->
 

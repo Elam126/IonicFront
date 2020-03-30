@@ -84,6 +84,11 @@ ion-card-title {
   margin-bottom: 7px;
 }
 
+ion-refresher{
+  height: 100%;
+  width: 100%;
+}
+
 ion-slides {
   height: 100%;
   width: 100%;
@@ -91,7 +96,7 @@ ion-slides {
   margin-right:0 !important;
 }
 
-.screen{
+ion-content{
   height: 100%;
   width: 100%;
   flex-direction: row-reverse;

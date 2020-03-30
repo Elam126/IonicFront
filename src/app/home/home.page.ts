@@ -21,6 +21,7 @@ export class HomePage {
 
   //public items: any[] = [];
   items: Items []= [];
+  subscribe:any;
 
   slideOpts = {
     
@@ -45,6 +46,19 @@ export class HomePage {
   constructor(public navCtrl: NavController, private http: Http, public platform:Platform) {
   // this.getData();
 
+  //Exit app Code -Start
+  this.subscribe=this.platform.backButton.subscribeWithPriority(666666,()=>{
+    if(this.constructor.name == "HomePage")
+    {
+      if(window.confirm("Are you sure you want to exit from Madras Daily"))
+      {
+        navigator["app"].exitApp();
+      }
+    }
+  });
+  //Exit app Code -End
+
+
 //    this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data=>{this.items=data;})
     this.http.get('https://madras-daily.herokuapp.com/api/news'). map(res => res.json()).subscribe(data => {
       this.items = data.data;
@@ -54,11 +68,9 @@ export class HomePage {
     err => {
       console.log("Oops!")
     });
-
-    
-    
-    
   }
+
+
 /*
   getData(){
     let url= 'https://madras-daily.herokuapp.com/api/news';
